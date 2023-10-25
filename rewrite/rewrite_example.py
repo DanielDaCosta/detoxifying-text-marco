@@ -5,7 +5,8 @@ import os
 os.environ['TRANSFORMERS_CACHE'] = 'cache/'
 from transformers import BartForConditionalGeneration, BartTokenizer
 from IPython import embed
-from infilling import *
+# from infilling import *
+from training.infilling import *
 from utils import *
 import nltk.tokenize.casual
 import torch
@@ -15,7 +16,8 @@ from . import gen_utils
 from . import generation_logits_process
 import pandas as pd
 from tqdm import tqdm
-from .masking import Masker, method1, method1_list, preprocess
+# from .masking import Masker, method1, method1_list, preprocess
+from .masking import Masker, preprocess
 from .generation import Infiller
 import re
 import time
@@ -125,7 +127,7 @@ def rewrite(args):
             "_filterp" + str(args.filter_p)  + "_maxlength" + str(args.max_length) + "_topp" + str(args.top_p) 
         final_path = os.path.join(cur_path, gen_path)
         print(final_path)
-        
+        import time
         # Check if we have already generated this file; args.overwrite_gen means we will regenerate regardless
         # Branch: Generate from the masked inputs
         if not os.path.exists(os.path.join(final_path, "gen.txt")) or args.overwrite_gen:
@@ -135,9 +137,12 @@ def rewrite(args):
                 pass
 
             # Call the generate method
+            # outputs, decoded_outputs = rewriter.generate(inputs, decoded_mask_inputs, alpha_a = args.alpha_a, alpha_e = args.alpha_e, alpha_b = args.alpha_b, \
+            #     temperature = args.temperature, verbose = args.verbose, max_length = args.max_length, repetition_penalty= args.rep_penalty, \
+            #     top_p = args.top_p, filter_p = args.filter_p, top_k = args.top_k_gen, batch_size = args.batch_size, sample = args.sample)
             outputs, decoded_outputs = rewriter.generate(inputs, decoded_mask_inputs, alpha_a = args.alpha_a, alpha_e = args.alpha_e, alpha_b = args.alpha_b, \
                 temperature = args.temperature, verbose = args.verbose, max_length = args.max_length, repetition_penalty= args.rep_penalty, \
-                top_p = args.top_p, filter_p = args.filter_p, top_k = args.top_k_gen, batch_size = args.batch_size, sample = args.sample)
+                p = args.top_p, filter_p = args.filter_p, k = args.top_k_gen, batch_size = args.batch_size, sample = args.sample)
 
             # Save the original inputs and the generations
             with open(os.path.join(final_path, "orig.txt"), "w") as f:
@@ -188,15 +193,20 @@ def rewrite(args):
 
             final_path = os.path.join(cur_path, gen_path)
             print(final_path)
+            import time
             if not os.path.exists(os.path.join(final_path, "gen.txt")) or args.overwrite_gen:
                 try:
                     os.mkdir(final_path)
                 except:
                     pass
 
+                # outputs, decoded_outputs = rewriter.generate(inputs, decoded_mask_inputs, alpha_a = args.alpha_a, alpha_e = args.alpha_e, alpha_b = args.alpha_b, \
+                #     temperature = args.temperature, verbose = args.verbose, max_length = args.max_length, repetition_penalty = args.rep_penalty, \
+                #     top_p = args.top_p, filter_p = args.filter_p, top_k = args.top_k_gen, batch_size = args.batch_size, sample = args.sample)
+                
                 outputs, decoded_outputs = rewriter.generate(inputs, decoded_mask_inputs, alpha_a = args.alpha_a, alpha_e = args.alpha_e, alpha_b = args.alpha_b, \
                     temperature = args.temperature, verbose = args.verbose, max_length = args.max_length, repetition_penalty = args.rep_penalty, \
-                    top_p = args.top_p, filter_p = args.filter_p, top_k = args.top_k_gen, batch_size = args.batch_size, sample = args.sample)
+                    p = args.top_p, filter_p = args.filter_p, k = args.top_k_gen, batch_size = args.batch_size, sample = args.sample)
 
                 with open(os.path.join(final_path, "orig.txt"), "w") as f:
                     for l in inputs:
@@ -219,7 +229,7 @@ if __name__ == "__main__":
     # General args
     parser.add_argument("--seed", type = int, default = 0, help = "Random seed to use")
     parser.add_argument("--data_type", default ="manual")
-    parser.add_argument("--data_path", default =None, help = "Path to the data")
+    parser.add_argument("--data_path", default=None, help = "Path to the data")
     parser.add_argument("--output_dir", default = "data/dexp_outputs/", help = "Directory to save the outputs to")
     parser.add_argument("--base_path", default = "facebook/bart-base", help = "Base model to use")
     parser.add_argument("--antiexpert_path", default = "hallisky/bart-base-toxic-antiexpert", help = "Antiexpert model to use")

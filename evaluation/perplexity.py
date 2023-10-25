@@ -1,6 +1,6 @@
 # https://huggingface.co/transformers/perplexity.html
 import os
-os.environ['TRANSFORMERS_CACHE'] = "/gscratch/xlab/hallisky/KAug/cache"
+os.environ['TRANSFORMERS_CACHE'] = "detoxifying-text-marco/cache"
 import transformers
 import torch
 from IPython import embed

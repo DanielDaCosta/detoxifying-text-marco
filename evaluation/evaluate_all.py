@@ -21,7 +21,7 @@ def save_toxicity(tox_hyp, percent_tox_hyp, path, file_name = "toxicity.txt"):
 
 def evaluate_all(references, hypotheses, eval_ref=True):
     tox_ref, perp_ref, percent_tox_ref = None, None, None
-    
+    tox_hyp, percent_tox_hyp, tox_hyp = None, None, None
     # print("Calculating toxicity...")
     # tox_hyp = get_toxicity(hypotheses)
     # percent_tox_hyp = sum(np.array(tox_hyp) >= 0.5) / len(tox_hyp)
@@ -30,7 +30,6 @@ def evaluate_all(references, hypotheses, eval_ref=True):
     print("Calculating perplexity...")
     perp_hyp =  np.nanmean(get_perplexity(hypotheses))
 
-    embed()
     print("Calculating bert score...")
     bs = np.nanmean(get_bert_scores(zip(references,hypotheses))["f1"])
     print("Calculating bleu4...")
@@ -60,7 +59,7 @@ def get_data(args):
 def eval_args(args):
     orig, gen = get_data(args)
 
-    metrics = evaluate_all(orig, gen)
+    metrics = evaluate_all(orig, gen, eval_ref=False)
     name = args.gen_path.split('/')[-1]
     save_path = args.gen_path[:-4] + "_stats.txt"
 

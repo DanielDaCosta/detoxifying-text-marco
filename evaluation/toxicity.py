@@ -11,7 +11,8 @@ qps = 10
 rate = 1/qps
 
 # PUT YOUR API KEY HERE
-api_key = None
+# api_key = None
+api_key = "AIzaSyAVytlgvLYmAM1w-gy57obAoRsjGfcSHoE"
 
 def getAttribProb(attrib_name, response_dict):
     return response_dict['attributeScores'][attrib_name]['summaryScore']['value']
