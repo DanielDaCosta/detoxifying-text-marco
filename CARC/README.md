@@ -11,4 +11,4 @@ Google Drive path: https://drive.google.com/drive/folders/1smVZ0xouuVVNZE6pbmgQF
 
 
 ### Dataset
-- train_toxic.csv & val_toxic.csv: https://drive.google.com/drive/folders/1TeUC1swuEIScsIzI2Cnl28Yg3fF8vfzi?usp=sharing
+- `train_toxic.csv` & `val_toxic.csv`: https://drive.google.com/drive/folders/1TeUC1swuEIScsIzI2Cnl28Yg3fF8vfzi?usp=sharing
