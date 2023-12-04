@@ -19,6 +19,8 @@ Google Drive path: https://drive.google.com/drive/folders/1smVZ0xouuVVNZE6pbmgQF
 - `anti-expert-model/anti-expert-fine-tuned.out`: CARC output fille
 - `anti-expert-model/bart-base_1e-06_0_32_jigsaw_full_30/`: fine-tuned model on Toxic dataset.
 - `anti-expert-model/anti-expert.slurm`: CARC job script
+- `anti-expert-model/bart-small/anti-expert-bart-small.slurm`: CARC job script for BART small model
+- `anti-expert-model/bart-small/bart-small_7e-07_0_32_jigsaw_full_30/`: fine-tined bart-small model on toxic dataset
 
 
 ### Dataset
