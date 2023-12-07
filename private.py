@@ -1,0 +1,2 @@
+API_KEY = ""  # FILL
+OPENAI_API_KEY = ""  # FILL
