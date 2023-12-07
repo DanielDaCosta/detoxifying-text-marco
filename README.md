@@ -1,11 +1,13 @@
-# MaRCo Detoxification
+# Reproduction Study: MaRCo Detoxification
 This is the repository for the 2023 ACL Paper ["Detoxifying Text with MaRCo: Controllable Revision with Experts and Anti-Experts"](https://arxiv.org/abs/2212.10543)
 
 <p align="center">
   <img src="https://pbs.twimg.com/media/FkeZuLBUUAA6abX?format=jpg&name=4096x4096" alt="drawing" width="75%"/>
 </p>
 
-## Using this Repository
+Author's original [Github Repo](https://github.com/shallinan1/MarcoDetoxification) 
+
+## Dependencies
 
 ### <ins>Setting up the Environment</ins>
 To set up the environment to run the code, make sure to have conda installed, then run
@@ -21,6 +23,9 @@ Then, activate the environment
 ### <ins>Compute Requirements</ins>
 
 We recommend using a single RTX6000 GPU (this is what we used for our experiments) or another NVIDIA GPU with >24GB VRAM to enable large-scale rewriting (large batch size). Our method can also run on smaller models <24GB VRAM, but you should set the batch size to be lower.
+
+## Datasets and Preprocess
+See datasets/README.md for access to the datasets and a description.
 
 ### <ins>Detoxification with MaRCo</ins>
 
