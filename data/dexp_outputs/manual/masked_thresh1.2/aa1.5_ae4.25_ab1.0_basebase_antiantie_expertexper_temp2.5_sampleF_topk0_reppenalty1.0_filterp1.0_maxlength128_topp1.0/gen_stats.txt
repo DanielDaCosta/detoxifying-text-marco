@@ -1,8 +1,0 @@
-bertscore: 0.9610162086847449
-bleu4: 0.7910687152257226
-toxicity gen: None
-perplexity gen: 50.30343435600371
-toxicity orig: None
-perplexity orig: None
-percent toxic gen: None
-percent toxic ref: None

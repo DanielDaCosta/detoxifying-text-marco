@@ -85,3 +85,10 @@ Feel free to modify this file to accomodate your own data and/or other masking/g
 
 ## Auxillary Files
 `gen_utils.py` and `generation_logits_process.py` are helper functions for generation.
+
+# Commands
+The `rewrite_example.py` file masking the input and generates the less toxic comments using both the anti-expert and expert model.
+
+```
+python -m rewrite.rewrite_example --data_path {dataset_path} --antiexpert_path {anti_expert_path} --expert_path {expert_path} --output_dir {output_dir} --rep_penalty 1.0 --thresh 1.2 --temperature 2.5 --alpha_a 1.5 --alpha_e 4.25 --alpha_b 1.0 --filter_p 1.0 --batch_size 50 --max_length 128 --top_k 0 --top_p 1
+```

@@ -69,6 +69,7 @@ class Masker():
         self.tokenizer = BartTokenizer.from_pretrained(tokenizer)
 
         # Initialize models
+        print(f"Checking anti-expert local file name: {antiexpert_path}")
         self.model = BartForConditionalGeneration.from_pretrained(base_path, forced_bos_token_id = self.tokenizer.bos_token_id).to(self.device)
         self.antiexpert = BartForConditionalGeneration.from_pretrained(antiexpert_path, forced_bos_token_id = self.tokenizer.bos_token_id).to(self.device)
         self.expert = BartForConditionalGeneration.from_pretrained(expert_path, forced_bos_token_id = self.tokenizer.bos_token_id).to(self.device)
@@ -218,7 +219,8 @@ if __name__ == '__main__':
     masker = Masker(
         seed = 0, 
         base_path = "facebook/bart-base", 
-        antiexpert_path = "hallisky/bart-base-toxic-antiexpert",\
+        # antiexpert_path = "hallisky/bart-base-toxic-antiexpert",\
+        antiexpert_path = "/Users/danieldacosta/Documents/USC/csci662/Project/CARC_outputs/bart-base_1e-06_0_32_jigsaw_full_30/checkpoint-35000", \
         expert_path = "hallisky/bart-base-nontoxic-expert", \
         tokenizer = "facebook/bart-base"
         )

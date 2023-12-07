@@ -61,6 +61,7 @@ class Infiller():
 
         self.antiexpert = None
         if antiexpert_type != "none":
+            print(f"Checking anti-expert local file name: {model_map[antiexpert_type]}")
             self.antiexpert = BartForConditionalGeneration.from_pretrained(model_map[antiexpert_type], forced_bos_token_id = self.tokenizer.bos_token_id).to(self.device)
 
         self.expert = None
@@ -293,7 +294,8 @@ if __name__ == '__main__':
     rewriter = Infiller(
         seed = 0, 
         base_path = "facebook/bart-base", 
-        antiexpert_path = "hallisky/bart-base-toxic-antiexpert",\
+        # antiexpert_path = "hallisky/bart-base-toxic-antiexpert",\
+        antiexpert_path = "/Users/danieldacosta/Documents/USC/csci662/Project/CARC_outputs/bart-base_1e-06_0_32_jigsaw_full_30/checkpoint-35000",\
         expert_path = "hallisky/bart-base-nontoxic-expert", \
         base_type = "base", 
         antiexpert_type = "antiexpert", 
