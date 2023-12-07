@@ -25,35 +25,25 @@ Then, activate the environment
 We recommend using a single RTX6000 GPU (this is what we used for our experiments) or another NVIDIA GPU with >24GB VRAM to enable large-scale rewriting (large batch size). Our method can also run on smaller models <24GB VRAM, but you should set the batch size to be lower.
 
 ## Datasets and Preprocess
-See datasets/README.md for access to the datasets and a description.
+See `datasets/README.md` for access to the datasets and a description.
 
-### <ins>Detoxification with MaRCo</ins>
+## Training
+See `training/README.md` for code and commands.
 
-See `rewrite/README.md` for details on how to run the detoxification pipeline,
+The pre-trained models used were downloaded from hugging face:
+- BART-Base: https://huggingface.co/facebook/bart-base
+- BART-Small: https://huggingface.co/lucadiliello/bart-small
+- Mistral-7B: [Together AI pre-trainned model](https://docs.together.ai/docs/inference-models)
 
-### <ins>Expert Models</ins>
 
-The expert and anti-expert models are available on huggingface here:
-* [Expert](https://huggingface.co/hallisky/bart-base-nontoxic-expert): BART-base further finetuned on the ***non-toxic*** portion of the Jigsaw Corpus with the same pretraining masked denoising objective
-* [Anti-Expert](https://huggingface.co/hallisky/bart-base-toxic-antiexpert): BART-base further finetuned on the ***toxic*** portion of the Jigsaw Corpus with the same pretraining masked denoising objective
+## Evaluation
+See `evaluation/README.md` for code and commands.
 
-You can download then load them or use these directly from the huggingface transfomers library, ie, 
+<!-- ### <ins>Detoxification with MaRCo</ins>
 
-    # Load model directly
-    from transformers import AutoTokenizer, AutoModelForSeq2SeqLM
+See `rewrite/README.md` for details on how to run the detoxification pipeline, -->
 
-    tokenizer = AutoTokenizer.from_pretrained("hallisky/bart-base-nontoxic-expert")
-    model = AutoModelForSeq2SeqLM.from_pretrained("hallisky/bart-base-nontoxic-expert")
 
-If you want to train your own expert/anti-expert models on BART with custom hyperparameter/dataset, please see the `training` folder of this repository.
-
-### <ins>Datasets</ins>
-
-See `datasets/README.md` for access to the datasets and a description. 
-
-### <ins>Evaluation</ins>
-
-See `evaluation/README.md` for the evaluation pipeline on detoxifications. 
 
 ## Citing this Work
 If you use/reference this work, please cite us with:

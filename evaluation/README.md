@@ -1,5 +1,10 @@
 # Evaluation Metrics
 
+To assess the dataset, the initial step involves generating "rewrites," which represent the rephrasing utilizing the outputs from both the Anti-Expert and Expert models. Please refer to "rewrite/REAME.md".
+
+The rewrites obtained for each of the models (BART-base, BART-small and Mistral7B) for each eval dataset are located under folder: `rewrite/`
+
+
 ## Toxicity
 The file `toxicity.py` has the function `get_toxicity` to get PerspectiveAPI toxicity scores on one or more texts. To run this function, you will need to replace 14 in this file with your API key from Perspective API. You may also need to adjust the `qps` field, which designates the queries per second for Perspective API.
 
