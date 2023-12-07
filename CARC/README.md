@@ -1,7 +1,7 @@
 # CARC Outputs
 
 ## Expert model
-Google Drive: https://drive.google.com/drive/folders/1RAuzXQmb8n1ILaY4noV3hRdqm_yjeX1i?usp=drive_link
+Google Drive(<ins>You must use your USC account to access</ins>): https://drive.google.com/drive/folders/1smVZ0xouuVVNZE6pbmgQF6z48yEEBagk?usp=sharing
 
 ### Files
 - `expert-model/expert-fine-tuned.out`: CARC output fille
@@ -16,7 +16,7 @@ Google Drive: https://drive.google.com/drive/folders/1RAuzXQmb8n1ILaY4noV3hRdqm_
 
 ## Anti-expert-model
 
-Google Drive path: https://drive.google.com/drive/folders/1smVZ0xouuVVNZE6pbmgQF6z48yEEBagk?usp=sharing
+Google Drive path(<ins>You must use your USC account to access</ins>): https://drive.google.com/drive/folders/1RAuzXQmb8n1ILaY4noV3hRdqm_yjeX1i?usp=sharing
 
 ### Files
 - `anti-expert-model/anti-expert-fine-tuned.out`: CARC output fille

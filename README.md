@@ -35,6 +35,8 @@ The pre-trained models used were downloaded from hugging face:
 - BART-Small: https://huggingface.co/lucadiliello/bart-small
 - Mistral-7B: [Together AI pre-trainned model](https://docs.together.ai/docs/inference-models)
 
+All batch scripts utilized for jobs on CARC can be located in the `CARC/` folder, alongside the respective outputs and training logs for each job.
+
 
 ## Evaluation
 See `evaluation/README.md` for code and commands.
