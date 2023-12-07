@@ -66,7 +66,3 @@ If you use/reference this work, please cite us with:
     }
 
 
-## Contact
-
-If you have any issues with the repository, questions about the paper, or anything else, please email hallisky@uw.edu.
-
