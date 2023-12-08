@@ -1,6 +1,11 @@
 # Using MaRCo for Detoxification
 
-Given a text, the main components of MaRCo are 1) determining potentially toxic tokens in the text and masking them 2) infilling the masked tokens. To this end, we have the following code structure:
+Given a text, the main components of MaRCo are 1) determining potentially toxic tokens in the text and masking them 2) infilling the masked tokens. To this end, we have the following code structure
+## Files
+- rewrite_Mistral_7B.zip: Rewrites from Mistral 7B model
+- rewrite_BART_Base.zip: Rewrites from Bart-base model 
+- rewrite_BART_Small.zip: Rewrites from Bart-Small model
+- rewrite_OG.zip: Rewrites from Original MARCO model
 
 ## Masking
 `masking.py` contains code to mask inputs by comparing token probabilities under the expert and antiexpert models. Specifically, one must instantiate the `Masker()` class with the tokenizer path, seed, base model path, expert model path, and an antiexpert model path. The specific configuration we use recommend is:
